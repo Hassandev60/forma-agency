@@ -88,7 +88,7 @@ export default function WorkPage() {
       : allProjects.filter((p) => p.category === active);
 
   return (
-    <div className="pt-32 pb-24 px-6 min-h-screen">
+    <div className="pt-20 pb-14 px-6 min-h-screen">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
