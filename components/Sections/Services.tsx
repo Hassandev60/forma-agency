@@ -90,14 +90,24 @@ export default function Services() {
     <section className="py-32 px-6">
       <div className="max-w-7xl mx-auto">
         <div ref={ref} className="mb-16">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="text-[#c8f65d] text-xs uppercase tracking-widest mb-4"
-          >
-            What we do
-          </motion.p>
+         <motion.div
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  className="mb-20"
+>
+  <p className="text-[#c8f65d] text-xs uppercase tracking-[0.3em] mb-4 font-medium">
+    Services
+  </p>
+
+  <h1 className="font-sans font-bold text-4xl md:text-5xl text-white mb-5 leading-[1.1] tracking-tight">
+    What we do
+  </h1>
+
+  <p className="text-white/50 text-base md:text-lg leading-relaxed max-w-xl">
+    Full-service creative studio covering brand strategy, design, development, and motion.
+  </p>
+</motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
