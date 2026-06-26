@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Forma Agency — Creative Agency Website
 
-## Getting Started
+## Tech Stack
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- PostgreSQL (via `pg` package)
+- Server Actions (contact form)
 
-First, run the development server:
+## Setup
 
+### 1. Install dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx create-next-app@latest forma-agency --typescript --tailwind --app
+cd forma-agency
+npm install framer-motion pg
+npm install -D @types/pg
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Environment variables
+Create `.env.local`:
+```env
+DATABASE_URL=postgresql://user:password@localhost:5432/forma_agency
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Database setup
+Run this SQL to create the contacts table:
+```sql
+CREATE TABLE contacts (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(150) NOT NULL,
+  company VARCHAR(100),
+  service VARCHAR(100),
+  message TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Folder structure
+```
+src/
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx                  ← Home
+│   ├── work/page.tsx
+│   ├── services/page.tsx
+│   ├── about/page.tsx
+│   └── contact/page.tsx
+├── components/
+│   ├── layout/
+│   │   ├── Navbar.tsx
+│   │   └── Footer.tsx
+│   └── sections/
+│       ├── Hero.tsx
+│       ├── Services.tsx
+│       ├── Work.tsx
+│       ├── About.tsx
+│       ├── Testimonials.tsx
+│       └── Stats.tsx
+├── lib/
+│   └── db.ts
+└── actions/
+    └── contact.ts
+```
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 5. Run dev server
+```bash
+npm run dev
+```
