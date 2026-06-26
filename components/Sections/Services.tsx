@@ -89,7 +89,7 @@ export default function Services() {
   return (
     <section className="py-32 px-6">
       <div className="max-w-7xl mx-auto">
-        <div ref={ref} className="mb-16">
+        <div ref={ref} className="mb-10">
          <motion.div
   initial={{ opacity: 0, y: 30 }}
   animate={{ opacity: 1, y: 0 }}
