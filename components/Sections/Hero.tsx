@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-14">
       {/* Background Grid */}
       <div
         className="absolute inset-0 opacity-[0.03]"
